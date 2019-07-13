@@ -1,0 +1,33 @@
+.header {
+  &.headerColor {
+    background-color: #ceec97 !important;
+  }
+  &.removedStyles {
+    border-radius: 0% !important;
+    margin: 0% !important;
+  }
+  &.headerLineHeight {
+    line-height: 1em;
+  }
+  .item {
+    .header {
+      a {
+        font-size: 1.3em;
+        color: #011638;
+        letter-spacing: 0.05em;
+      }
+    }
+    i {
+      &.icon {
+        color: #a8296b;
+        font-size: 1.5em;
+      }
+    }
+    a {
+      color: #a8296b;
+    }
+  }
+  p:last-child {
+    margin: 0 0 1em;
+  }
+}
