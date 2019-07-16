@@ -1,7 +1,7 @@
 /* Library Imports */
 import React, { Component } from "react";
 import { Icon, Menu } from "semantic-ui-react";
-import { withRouter, Link, Redirect } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 /* Component Import */
 import HamburgerHTML from "./Hamburger.html";
@@ -24,7 +24,8 @@ class Header extends Component {
     window.addEventListener("resize", null);
   }
   handleResize = () => this.setState({ WindowSize: window.innerWidth });
-  handleItemClick = (e, target = {}) => this.setState({ activeItem: target.name });
+  handleItemClick = (e, target = {}) =>
+    this.setState({ activeItem: target.name });
 
   contentClickHandler = e => {
     e.preventDefault();
@@ -46,7 +47,8 @@ class Header extends Component {
         <Menu
           borderless={true}
           inverted
-          className={"header headerColor removedStyles headerLineHeight"}>
+          className={"header headerColor removedStyles headerLineHeight"}
+        >
           <Menu.Item>
             <Menu.Header as={"h2"} className={"rochester"}>
               <Link to="/">Laurie Anne's Photogrpahy</Link>
@@ -59,9 +61,16 @@ class Header extends Component {
                 position={"right"}
                 active={activeItem === "About"}
                 onClick={this.handleItemClick}
-                as={"p"}>
+                as={"p"}
+              >
                 <Link to={"/AboutMe"}>
-                  <Icon name={activeItem === "About" ? "address card" : "address card outline"} />
+                  <Icon
+                    name={
+                      activeItem === "About"
+                        ? "address card"
+                        : "address card outline"
+                    }
+                  />
                   About
                 </Link>
               </Menu.Item>
@@ -69,9 +78,12 @@ class Header extends Component {
                 name={"Portfolio"}
                 active={activeItem === "Portfolio"}
                 onClick={this.handleItemClick}
-                as={"p"}>
+                as={"p"}
+              >
                 <Link to={"/Portfolio"}>
-                  <Icon name={activeItem === "Portfolio" ? "folder open" : "folder"} />
+                  <Icon
+                    name={activeItem === "Portfolio" ? "folder open" : "folder"}
+                  />
                   Portfolio
                 </Link>
               </Menu.Item>
@@ -79,7 +91,8 @@ class Header extends Component {
                 name={"Blog"}
                 active={activeItem === "Blog"}
                 onClick={this.handleItemClick}
-                as={"p"}>
+                as={"p"}
+              >
                 <Link to={"/Blog"}>
                   <Icon name={"book"} />
                   Blog
@@ -89,9 +102,14 @@ class Header extends Component {
                 name={"Contact"}
                 active={activeItem === "Contact"}
                 onClick={this.handleItemClick}
-                as={"p"}>
+                as={"p"}
+              >
                 <Link to={"/ContactMe"}>
-                  <Icon name={activeItem === "Contact" ? "envelope open" : "envelope"} />
+                  <Icon
+                    name={
+                      activeItem === "Contact" ? "envelope open" : "envelope"
+                    }
+                  />
                   Contact
                 </Link>
               </Menu.Item>
@@ -100,7 +118,11 @@ class Header extends Component {
         </Menu>
         {mobile && (
           <div
-            style={{ display: "table-cell", verticalAlign: "middle" }}
+            style={{
+              display: "table-cell",
+              verticalAlign: "middle",
+              zIndex: 999
+            }}
             dangerouslySetInnerHTML={{ __html: HamburgerHTML }}
             onClick={this.contentClickHandler}
           />

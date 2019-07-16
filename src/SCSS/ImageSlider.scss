@@ -1,0 +1,50 @@
+.headerImage {
+  height: 15.3em;
+  width: 100%;
+  margin: 0% !important;
+  padding: 0%;
+
+  .slider {
+    height: 100% !important;
+    a {
+      z-index: 1;
+    }
+    svg:not(:root) {
+      height: 20px;
+      width: 10px;
+      color: white;
+      polygon {
+        fill: white;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  .headerImage {
+    height: 21em;
+  }
+}
+@media only screen and (min-width: 525px) {
+  .headerImage {
+    height: 24em;
+  }
+}
+@media only screen and (min-width: 680px) {
+  .headerImage {
+    height: 30em;
+  }
+  .headerImage .backgroundCover {
+    display: block;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .headerImage {
+    height: 41em;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .headerImage {
+    height: 55.5em;
+  }
+}

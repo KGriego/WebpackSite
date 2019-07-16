@@ -19,11 +19,6 @@ class ImageSlider extends Component {
   getHeaderPicture = () => {
     const pics = tileData.reduce((pic, img) => {
       if (img.frontPage) {
-        // const responsiveImage = require(`${
-        //   img.src
-        // }?placeholder=true&sizes[]=640,sizes[]=768,sizes[]=1024,sizes[]=1366,sizes[]=1600`);
-
-        // console.log(responsiveImage);
         pic.push(img);
       }
       return pic;
@@ -34,7 +29,11 @@ class ImageSlider extends Component {
     const { randPic, max } = this.state;
     return (
       <Grid columns={"1"} className={"headerImage"}>
-        <Slider autoplay={2500} infinite slideIndex={Math.floor(Math.random() * Math.floor(max))}>
+        <Slider
+          autoplay={2500}
+          infinite
+          slideIndex={Math.floor(Math.random() * Math.floor(max))}
+        >
           {randPic.map((item, i) => (
             <div
               key={`${item.src}-${i}`}

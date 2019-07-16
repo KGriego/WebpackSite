@@ -6,6 +6,7 @@ import { Grid } from "semantic-ui-react";
 
 /* Component Imports */
 import ImageSlider from "../Components/ImageSlider";
+import Cards from "../Components/Cards";
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +20,11 @@ class App extends Component {
         <Grid.Row>
           <Grid.Column>
             <ImageSlider />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column>
+            <Cards />
           </Grid.Column>
         </Grid.Row>
       </Grid>

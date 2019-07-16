@@ -13,9 +13,13 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.(png|svg|jpg|gif)$/, use: ["file-loader"] },
+      // { test: /\.(png|svg|jpg|gif)$/, use: ["file-loader"] },
       { test: /\.svg$/, loader: "svg-inline-loader" },
-      { test: /\.(js|jsx)$/, exclude: /node_modules/, use: { loader: "babel-loader" } },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: { loader: "babel-loader" }
+      },
       { test: /\.html$/, use: [{ loader: "html-loader" }] },
       {
         test: /\.module\.s(a|c)ss$/,
@@ -42,22 +46,14 @@ module.exports = {
           { loader: "sass-loader", options: { sourceMap: isDevelopment } }
         ]
       },
-      { test: /(\.css$)/, include: /node_modules/, loaders: ["style-loader", "css-loader"] },
-      { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: "url-loader?limit=100000" },
       {
-        test: /\.(gif|png|jpe?g|svg)$/i,
-        use: [
-          "file-loader",
-          {
-            loader: "image-webpack-loader",
-            options: {
-              bypassOnDebug: true,
-              disable: true,
-              mozjpeg: { progressive: true, quality: 65 },
-              pngquant: { quality: "65-90", speed: 4 }
-            }
-          }
-        ]
+        test: /(\.css$)/,
+        include: /node_modules/,
+        loaders: ["style-loader", "css-loader"]
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: "url-loader?limit=100000"
       },
       {
         test: /\.(jpe?g|png)$/i,

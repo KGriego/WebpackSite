@@ -1,0 +1,71 @@
+.gridOfImages {
+  .gridDivider {
+    background-color: #ceec97;
+    box-shadow: 10px 15px 25px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    margin-bottom: 3%;
+    padding: 2%;
+
+    .header {
+      font-family: Merienda;
+      color: #011638;
+      font-size: 2.4em;
+    }
+  }
+  .imageHolder {
+    margin: 1em;
+    margin-bottom: 30px;
+  }
+  .imageCard {
+    border: #a8296b solid 1.5px !important;
+    background-color: #ebccd4 !important;
+    box-shadow: 10px 15px 25px 0 rgba(0, 0, 0, 0.2) !important;
+    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) !important;
+
+    * {
+      transition: opacity 150ms linear 100ms, transform 150ms ease-in-out 100ms;
+    }
+  }
+  .imageCard:hover {
+    opacity: 1 !important;
+    transform: scale(0.95) !important;
+    transition-delay: 0ms, 0ms !important;
+    box-shadow: 2px 5px 10px 0 rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .imageCardHeader {
+    font-family: Merienda !important;
+    font-size: 2em !important;
+    color: #011638 !important;
+  }
+  .imageCardDescription,
+  .imageCard > .extra {
+    font-family: Dosis !important;
+    font-size: 1.4em !important;
+    line-height: 1em !important;
+    color: #3d7068 !important;
+  }
+
+  .imageCardLink {
+    color: #a8296b !important;
+  }
+  .ui {
+    &.card,
+    &.cards > .card {
+      width: 320px;
+    }
+  }
+
+  @media only screen and (min-width: 525px) {
+    .ui.card,
+    .ui.cards > .card {
+      width: 420px;
+    }
+  }
+  @media only screen and (min-width: 680px) {
+    .ui.card,
+    .ui.cards > .card {
+      width: 320px;
+    }
+  }
+}
