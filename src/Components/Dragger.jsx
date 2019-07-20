@@ -32,22 +32,22 @@ class Dragger extends React.Component {
   render() {
     const { randPic } = this.state;
     return (
-      <PhysicsDragger
-        className="dragger"
-        friction={0.85}
-        ResizeObserver
-        style={{ backgroundColor: "red" }}
-      >
-        <div
-          style={{
-            height: "100vh",
-            width: "200vw",
-            padding: 50,
-            backgroundColor: "red"
-          }}
+      <div style={{ width: "100vw", overflow: "hidden" }}>
+        <PhysicsDragger
+          ResizeObserver
+          className="dragger"
+          friction={0.85}
+          style={{ backgroundColor: "red" }}
         >
-          <Draggable bounds="parent">
-            <Card.Group>
+          <div
+            style={{
+              height: "100vh",
+              width: "200vw",
+              padding: 50,
+              backgroundColor: "red"
+            }}
+          >
+            <Card.Group centered>
               {randPic.map(item => {
                 return (
                   <Card key={item.src.src}>
@@ -59,9 +59,9 @@ class Dragger extends React.Component {
                 );
               })}
             </Card.Group>
-          </Draggable>
-        </div>
-      </PhysicsDragger>
+          </div>
+        </PhysicsDragger>
+      </div>
     );
   }
 }

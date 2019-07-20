@@ -310,7 +310,7 @@ let Dragger = function (props) {
     }
   }
   function onStart(e) {
-    if (e.target.className.includes("ui")) return;
+    // if (e.target.className.includes("ui")) return;
     if (props.disabled) return;
     // dismiss clicks from right or middle buttons
     // (credit: https://github.com/metafizzy/flickity/blob/e2706840532c0ce9c4fc25832e810ad4f9823b61/dist/flickity.pkgd.js#L2176)
