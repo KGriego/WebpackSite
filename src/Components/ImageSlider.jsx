@@ -9,10 +9,13 @@ import tileData from "../js/tileData";
 /* Style Imports */
 
 class ImageSlider extends Component {
-  state = {
-    randPic: [],
-    max: 10
-  };
+  constructor(props) {
+    super();
+    this.state = {
+      randPic: [],
+      max: 10
+    };
+  }
   componentDidMount() {
     this.getHeaderPicture();
   }
@@ -28,18 +31,18 @@ class ImageSlider extends Component {
   render() {
     const { randPic, max } = this.state;
     return (
-      <Grid columns={"1"} className={"headerImage"}>
+      <Grid className="headerImage" columns="1">
         <Slider
           autoplay={2500}
           infinite
           slideIndex={Math.floor(Math.random() * Math.floor(max))}
         >
-          {randPic.map((item, i) => (
+          {randPic.map(({ src }) => (
             <div
-              key={`${item.src}-${i}`}
+              key={`${src}`}
               style={{
                 height: "100%",
-                backgroundImage: `url('${item.src}')`,
+                backgroundImage: `url('${src}')`,
                 backgroundSize: "cover"
               }}
             />

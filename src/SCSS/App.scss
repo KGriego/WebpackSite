@@ -3,8 +3,12 @@
 @import "~react-animated-slider/build/horizontal.css";
 
 /* Component Styles */
-@import "./SCSS/Header.scss";
-@import "./SCSS/Hamburger.scss";
-@import "./SCSS/Globals.scss";
-@import "./SCSS/ImageSlider.scss";
-@import "./SCSS/Cards.scss";
+@import "./Header.scss";
+@import "./Hamburger.scss";
+@import "./Globals.scss";
+@import "./ImageSlider.scss";
+@import "./Dragger.scss";
+
+a:hover {
+  text-decoration: underline;
+}

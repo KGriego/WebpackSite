@@ -10,7 +10,6 @@ import { render } from "react-dom";
 import App from "./App";
 
 // const store = configureStore();
-
 render(
   // <Provider store={store}>
   <App />,

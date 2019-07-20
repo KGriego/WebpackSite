@@ -5,10 +5,10 @@ const path = require("path");
 const isDevelopment = process.env.NODE_ENV !== "production";
 
 module.exports = {
-  entry: ["babel-polyfill", "./src/index.jsx"],
+  entry: ["babel-polyfill", "./src/index.js"],
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "main.jsx",
+    filename: "main.js",
     publicPath: "/"
   },
   module: {
