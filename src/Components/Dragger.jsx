@@ -1,20 +1,16 @@
 /* Library Imports */
 import React from "react";
-import { Card, Image } from "semantic-ui-react";
-import Gallery from "react-photo-gallery";
 
 /* Redux Imports */
 
 /* Component Imports */
-import ShowImage from "./ShowImage";
-import tileData from "../js/tileData";
+import Galleria from "./Galleria";
 
 class Dragger extends React.Component {
   constructor(props) {
     super(props);
     this.dragParent = React.createRef();
     this.state = {
-      gallery: [],
       randPic: [],
       pos: { x: 0, y: 0 },
       dragging: false,
@@ -22,9 +18,6 @@ class Dragger extends React.Component {
       image: {},
       imgIndex: 0
     };
-  }
-  componentDidMount() {
-    this.getHeaderPicture();
   }
   // we could get away with not having this (and just having the listeners on
   // our div), but then the experience would be possibly be janky. If there's
@@ -45,7 +38,7 @@ class Dragger extends React.Component {
     e.stopPropagation();
     e.preventDefault();
     // only left mouse button
-    if (e.button !== 0 || e.target.className.includes("meta")) return;
+    if (e.button !== 0 || e.target.className.includes("notDraggable")) return;
     const { current } = this.dragParent;
     let pos = { top: current.offsetTop, left: current.offsetLeft };
     this.setState({
@@ -67,28 +60,9 @@ class Dragger extends React.Component {
     const y = e.pageY - rel.y;
     this.setState({ pos: { x, y } });
   };
-  getHeaderPicture = () => {
-    const gallery = [];
-    const pics = tileData.reduce((pic, img) => {
-      pic.push(img);
-      gallery.push({ ...img, ...img.src });
-      return pic;
-    }, []);
-    this.setState({ randPic: pics, gallery });
-  };
-  openPicture = i => {
-    const { showing } = this.state;
-    const image = tileData[i];
-    this.setState({ showing: !showing, image, imgIndex: i });
-  };
-  stopShowing = () => {
-    const { showing } = this.state;
-    this.setState({ showing: !showing, image: {} });
-  };
   render() {
-    const { randPic, pos, image, showing, imgIndex, gallery } = this.state;
-    console.log(gallery);
-    return !showing ? (
+    const { pos } = this.state;
+    return (
       <div
         onMouseDown={this.onMouseDown}
         onMouseMove={this.onMouseMove}
@@ -106,18 +80,8 @@ class Dragger extends React.Component {
           padding: 50
         }}
       >
-        <Gallery
-          photos={gallery}
-          direction={"column"}
-          // onClick={this.openLightbox}
-        />
+        <Galleria />
       </div>
-    ) : (
-      <ShowImage
-        image={image}
-        imgIndex={imgIndex}
-        stopShowing={this.stopShowing}
-      />
     );
   }
 }
