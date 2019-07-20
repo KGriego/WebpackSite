@@ -8,15 +8,7 @@ import { Grid } from "semantic-ui-react";
 import Dragger from "../Components/Dragger";
 
 function Home() {
-  return (
-    <Grid>
-      <Grid.Row>
-        <Grid.Column>
-          <Dragger />
-        </Grid.Column>
-      </Grid.Row>
-    </Grid>
-  );
+  return <Dragger />;
 }
 
 export default Home;

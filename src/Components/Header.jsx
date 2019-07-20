@@ -27,7 +27,7 @@ class Header extends Component {
       <>
         <Menu
           borderless
-          className="header headerColor removedStyles headerLineHeight"
+          className="headerMenu headerColor removedStyles headerLineHeight"
           inverted
         >
           <Menu.Item>

@@ -49,14 +49,22 @@ let applyBoundForce = function (_a) {
 
 let getBoundaries = function (_a) {
   let outerWidth = _a.outerWidth,
+    outerHeight = _a.outerHeight,
     innerWidth = _a.innerWidth,
-    elClientLeft = _a.elClientLeft;
-  let innerIsLessThanOuter = innerWidth < outerWidth;
+    innerHeight = _a.innerHeight,
+    elClientLeft = _a.elClientLeft,
+    elClientTop = _a.elClientTop;
+  let innerWidthIsLessThanOuterWidth = innerWidth < outerWidth;
+  let innerHeightIsLessThanOuterHeight = innerHeight < outerHeight;
   let leftEdge = elClientLeft;
+  let topEdge = elClientTop;
   let rightEdge = -innerWidth + outerWidth;
+  let bottomEdge = -innerHeight + outerHeight;
   return {
-    left: innerIsLessThanOuter ? leftEdge : rightEdge,
-    right: innerIsLessThanOuter ? rightEdge : leftEdge
+    left: innerWidthIsLessThanOuterWidth ? leftEdge : rightEdge,
+    right: innerWidthIsLessThanOuterWidth ? rightEdge : leftEdge,
+    top: innerHeightIsLessThanOuterHeight ? topEdge : bottomEdge,
+    bottom: innerHeightIsLessThanOuterHeight ? bottomEdge : topEdge
   };
 };
 
@@ -111,9 +119,13 @@ let Dragger = function (props) {
   let innerEl = useRef(null);
   // Dimensions
   let outerWidth = useRef(0);
+  let outerHeight = useRef(0);
   let innerWidth = useRef(0);
+  let innerHeight = useRef(0);
   let leftBound = useRef(0);
   let rightBound = useRef(0);
+  let topBound = useRef(0);
+  let bottomBound = useRef(0);
   // User input states
   let isDragging = useRef(false); // doesn't update render
   let _a = useState(false),
@@ -132,16 +144,25 @@ let Dragger = function (props) {
   useEffect(
     function () {
       outerWidth.current = outerEl.current.scrollWidth;
+      outerHeight.current = outerEl.current.scrollHeight;
       innerWidth.current = innerEl.current.scrollWidth;
+      innerHeight.current = innerEl.current.scrollHeight;
       let _a = getBoundaries({
           outerWidth: outerWidth.current,
+          outerHeight: outerHeight.current,
           innerWidth: innerWidth.current,
-          elClientLeft: outerEl.current.clientLeft
+          innerHeight: innerHeight.current,
+          elClientLeft: outerEl.current && outerEl.current.clientLeft,
+          elClientTop: outerEl.current && outerEl.current.clientTop
         }),
         left = _a.left,
-        right = _a.right;
+        right = _a.right,
+        top = _a.top,
+        bottom = _a.bottom;
       leftBound.current = left;
       rightBound.current = right;
+      topBound.current = top;
+      bottomBound.current = bottom;
       // Update the edge boundaries when the outer element is resized
       // Update the inner width when the children change size
       // Check first if ResizeObserver is available on the window or if a polyfill is supplied by the user via props
@@ -161,13 +182,20 @@ let Dragger = function (props) {
           outerWidth.current = entries[0].contentRect.width;
         let _a = getBoundaries({
             outerWidth: outerWidth.current,
+            outerHeight: outerHeight.current,
             innerWidth: innerWidth.current,
-            elClientLeft: outerEl.current.clientLeft
+            innerHeight: innerHeight.current,
+            elClientLeft: outerEl.current && outerEl.current.clientLeft,
+            elClientTop: outerEl.current && outerEl.current.clientTop
           }),
           left = _a.left,
-          right = _a.right;
+          right = _a.right,
+          top = _a.top,
+          bottom = _a.bottom;
         leftBound.current = left;
         rightBound.current = right;
+        topBound.current = top;
+        bottomBound.current = bottom;
         // broadcast onFrame event on component mount, as well as when the inner or outer elements change size
         if (props.onFrame) {
           props.onFrame({
@@ -310,7 +338,6 @@ let Dragger = function (props) {
     }
   }
   function onStart(e) {
-    // if (e.target.className.includes("ui")) return;
     if (props.disabled) return;
     // dismiss clicks from right or middle buttons
     // (credit: https://github.com/metafizzy/flickity/blob/e2706840532c0ce9c4fc25832e810ad4f9823b61/dist/flickity.pkgd.js#L2176)

@@ -43,6 +43,7 @@
   "dependencies": {
     "aphrodite": "^0.5.0",
     "eslint-plugin-react": "^7.14.2",
+    "lodash": "^4.17.15",
     "prop-types": "^15.6.0",
     "react": "^16.8.6",
     "react-animated-slider": "^1.1.4",

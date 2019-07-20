@@ -1,10 +1,13 @@
-.header {
+.headerMenu {
+  z-index: 110;
   &.headerColor {
     background-color: #ceec97 !important;
   }
   &.removedStyles {
     border-radius: 0% !important;
     margin: 0% !important;
+    position: absolute;
+    width: 100%;
   }
   &.headerLineHeight {
     line-height: 1em;

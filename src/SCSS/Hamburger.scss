@@ -109,6 +109,14 @@
   transition-delay: 1.3s;
 }
 
+.global-menu__item--demo-6:nth-of-type(5) {
+  transition-delay: 0.05s;
+}
+
+.global-menu__item--demo-6.is-opened:nth-of-type(5) {
+  transition-delay: 1.4s;
+}
+
 .shape-overlays {
   width: 100vw;
   height: 100vh;

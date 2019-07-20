@@ -1,6 +1,6 @@
+const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const path = require("path");
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 
@@ -51,14 +51,18 @@ module.exports = {
         include: /node_modules/,
         loaders: ["style-loader", "css-loader"]
       },
-      {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-        loader: "url-loader?limit=100000"
-      },
+      { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: "url-loader" },
       {
         test: /\.(jpe?g|png)$/i,
         loader: "responsive-loader",
-        options: { adapter: require("responsive-loader/sharp") }
+        options: {
+          adapter: require("responsive-loader/sharp"),
+          sizes: [640, 768, 1024, 1366, 1600, 1920],
+          placeholder: true,
+          placeholderSize: 50,
+          quality: 55,
+          // disable: isDevelopment ? true : false
+        }
       }
     ]
   },
