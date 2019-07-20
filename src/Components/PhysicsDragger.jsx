@@ -99,14 +99,13 @@ let styles = {
 styleInject(css);
 
 let defaultProps = {
-  friction: 0.92,
-  disabled: false
+  disabled: false,
+  friction: 0.92
 };
 let Dragger = function (props) {
+  const { friction, disabled, children, style, className } = props;
   let docStyle = document.documentElement.style;
-  let settings = useRef({
-    friction: props.friction
-  });
+  let settings = useRef({ friction });
   // DOM element refs
   let outerEl = useRef(null);
   let innerEl = useRef(null);
@@ -193,7 +192,7 @@ let Dragger = function (props) {
       observer.observe(outerEl.current);
       observer.observe(innerEl.current);
     },
-    [props.disabled]
+    [disabled]
   ); // keep track of whether the component is disabled
   // componentDidUpdate
   useEffect(
@@ -202,7 +201,7 @@ let Dragger = function (props) {
         settings.current = { friction: props.friction };
       }
     },
-    [props.friction]
+    [friction]
   );
   // setPosition is exposed via ref
   function setPosition(position) {
@@ -311,7 +310,6 @@ let Dragger = function (props) {
     }
   }
   function onStart(e) {
-    console.log(e.target.className);
     if (e.target.className.includes("ui")) return;
     if (props.disabled) return;
     // dismiss clicks from right or middle buttons
@@ -350,12 +348,12 @@ let Dragger = function (props) {
         styles.outer +
         " " +
         (isDraggingStyle ? styles.isDragging : "") +
-        (props.disabled ? " is-disabled" : "") +
+        (disabled ? " is-disabled" : "") +
         " " +
-        props.className,
+        className,
       onTouchStart: onStart,
       onMouseDown: onStart,
-      style: props.style
+      style: style
     },
     React.createElement(
       "div",
@@ -365,7 +363,7 @@ let Dragger = function (props) {
         className: styles.inner + " dragger-inner",
         style: { transform: "translateX(" + restPositionX.current + "px)" }
       },
-      props.children
+      children
     )
   );
 };

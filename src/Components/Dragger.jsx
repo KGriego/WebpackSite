@@ -3,17 +3,15 @@ import React from "react";
 import { Card, Image } from "semantic-ui-react";
 import Draggable from "react-draggable";
 import PhysicsDragger from "./PhysicsDragger";
-import ResizeObserver from "resize-observer-polyfill";
 
 /* Redux Imports */
 
 /* Component Imports */
 import tileData from "../js/tileData";
-import image from "../images/Albums/Insects/bee flower.jpg";
 
 class Dragger extends React.Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       randPic: []
     };
@@ -34,27 +32,34 @@ class Dragger extends React.Component {
   render() {
     const { randPic } = this.state;
     return (
-      <PhysicsDragger className="dragger" friction={0.85} ResizeObserver>
+      <PhysicsDragger
+        className="dragger"
+        friction={0.85}
+        ResizeObserver
+        style={{ backgroundColor: "red" }}
+      >
         <div
           style={{
-            height: 10000,
-            width: 5000,
+            height: "100vh",
+            width: "200vw",
             padding: 50,
             backgroundColor: "red"
           }}
         >
-          {randPic.map(item => {
-            return (
-              <Draggable bounds="parent" key={item.src.src}>
-                <Card>
-                  <Image src={item.src.src} />
-                  <Card.Content className="ui">
-                    <Card.Header className="ui">Click Me</Card.Header>
-                  </Card.Content>
-                </Card>
-              </Draggable>
-            );
-          })}
+          <Draggable bounds="parent">
+            <Card.Group>
+              {randPic.map(item => {
+                return (
+                  <Card key={item.src.src}>
+                    <Image src={item.src.src} />
+                    <Card.Content className="ui">
+                      <Card.Header className="ui">Click Me</Card.Header>
+                    </Card.Content>
+                  </Card>
+                );
+              })}
+            </Card.Group>
+          </Draggable>
         </div>
       </PhysicsDragger>
     );
