@@ -1,6 +1,7 @@
 /* Library Imports */
 import React from "react";
 import { Card, Image } from "semantic-ui-react";
+import Gallery from "react-photo-gallery";
 
 /* Redux Imports */
 
@@ -13,6 +14,7 @@ class Dragger extends React.Component {
     super(props);
     this.dragParent = React.createRef();
     this.state = {
+      gallery: [],
       randPic: [],
       pos: { x: 0, y: 0 },
       dragging: false,
@@ -66,11 +68,13 @@ class Dragger extends React.Component {
     this.setState({ pos: { x, y } });
   };
   getHeaderPicture = () => {
+    const gallery = [];
     const pics = tileData.reduce((pic, img) => {
       pic.push(img);
+      gallery.push({ ...img, ...img.src });
       return pic;
     }, []);
-    this.setState({ randPic: pics });
+    this.setState({ randPic: pics, gallery });
   };
   openPicture = i => {
     const { showing } = this.state;
@@ -82,7 +86,8 @@ class Dragger extends React.Component {
     this.setState({ showing: !showing, image: {} });
   };
   render() {
-    const { randPic, pos, image, showing, imgIndex } = this.state;
+    const { randPic, pos, image, showing, imgIndex, gallery } = this.state;
+    console.log(gallery);
     return !showing ? (
       <div
         onMouseDown={this.onMouseDown}
@@ -90,7 +95,7 @@ class Dragger extends React.Component {
         onMouseUp={this.onMouseUp}
         ref={this.dragParent}
         style={{
-          width: "100vw",
+          width: "101vw",
           backgroundColor: "red",
           overflowX: "hidden",
           position: "relative",
@@ -101,26 +106,11 @@ class Dragger extends React.Component {
           padding: 50
         }}
       >
-        <Card.Group style={{ marginTop: "1em" }}>
-          {randPic.map((item, i) => (
-            <Card key={item.src.src} style={{ cursor: "initial" }}>
-              <Image
-                key={item.src.src}
-                placeholder={item.src.placeholder}
-                src={item.src.src}
-                srcSet={item.src.srcSet}
-              />
-              <Card.Content>
-                <Card.Meta
-                  onClick={() => this.openPicture(i)}
-                  style={{ cursor: "pointer" }}
-                >
-                  Click me to view the picture!
-                </Card.Meta>
-              </Card.Content>
-            </Card>
-          ))}
-        </Card.Group>
+        <Gallery
+          photos={gallery}
+          direction={"column"}
+          // onClick={this.openLightbox}
+        />
       </div>
     ) : (
       <ShowImage
