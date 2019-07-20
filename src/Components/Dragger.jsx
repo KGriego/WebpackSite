@@ -72,8 +72,11 @@ class Dragger extends React.Component {
     }, []);
     this.setState({ randPic: pics });
   };
+  openPicture = () => {
+    console.log("hey");
+  };
   render() {
-    const { randPic, pos, rel } = this.state;
+    const { randPic, pos } = this.state;
     return (
       <div
         onMouseDown={this.onMouseDown}
@@ -81,31 +84,34 @@ class Dragger extends React.Component {
         onMouseUp={this.onMouseUp}
         ref={this.dragParent}
         style={{
-          width: "300vw",
-          overflow: "hidden",
+          width: "100vw",
           backgroundColor: "red",
           position: "absolute",
           height: "300vh",
-          left: rel ? `${pos.x}px` : "50%",
-          top: rel ? `${pos.y}px` : "50%",
-          transform: "translate(-50%, -50%)"
+          left: `${pos.x}px`,
+          top: `${pos.y}px`,
+          cursor: "pointer",
+          padding: 50
         }}
       >
-        {randPic.map(item => {
-          return (
-            <div key={item.src.src}>
-              <Image
-                src={item.src.src}
-                style={{
-                  position: "absolute",
-                  left: "50%",
-                  top: "50%",
-                  transform: "translate(-50%, -50%)"
-                }}
-              />
-            </div>
-          );
-        })}
+        <Card.Group style={{ marginTop: "1em" }}>
+          {randPic.map(item => {
+            return (
+              <Card key={item.src.src}>
+                <Image
+                  key={item.src.src}
+                  src={item.src.src}
+                  srcSet={item.src.srcSet}
+                />
+                <Card.Content>
+                  <Card.Meta onClick={this.openPicture}>
+                    Click me to view the picture!
+                  </Card.Meta>
+                </Card.Content>
+              </Card>
+            );
+          })}
+        </Card.Group>
       </div>
     );
   }

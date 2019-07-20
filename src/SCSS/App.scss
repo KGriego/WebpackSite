@@ -9,6 +9,10 @@
 @import "./ImageSlider.scss";
 @import "./Dragger.scss";
 
+body {
+  background-color: red;
+}
+
 a:hover {
   text-decoration: underline;
 }
