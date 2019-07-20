@@ -73,7 +73,7 @@ class Dragger extends React.Component {
           backgroundColor: "red",
           overflowX: "hidden",
           position: "relative",
-          height: "300vh",
+          height: "200vh",
           left: `${pos.x}px`,
           top: `${pos.y}px`,
           cursor: "pointer",
