@@ -1,6 +1,6 @@
 /* Library Imports */
 import React from "react";
-import { Card, Image, Grid } from "semantic-ui-react";
+import { Card, Image } from "semantic-ui-react";
 
 /* Redux Imports */
 
@@ -90,7 +90,7 @@ class Dragger extends React.Component {
         onMouseUp={this.onMouseUp}
         ref={this.dragParent}
         style={{
-          width: "125vw",
+          width: "100vw",
           backgroundColor: "red",
           overflowX: "hidden",
           position: "relative",
