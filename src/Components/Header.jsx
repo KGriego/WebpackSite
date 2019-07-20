@@ -24,24 +24,31 @@ class Header extends Component {
 
   render() {
     return (
-      <div style={{ zIndex: 110, position: "relative" }}>
-        <Menu
-          borderless
-          className="headerMenu headerColor removedStyles headerLineHeight"
-          inverted
-        >
-          <Menu.Item>
-            <Menu.Header as="h2" className="rochester">
-              <Link to="/">Laurie Anne&apos;s Photogrpahy</Link>
-            </Menu.Header>
-          </Menu.Item>
-        </Menu>
+      <>
+        <div style={{ zIndex: 98, position: "relative" }}>
+          <Menu
+            borderless
+            className="headerMenu headerColor removedStyles headerLineHeight"
+            inverted
+          >
+            <Menu.Item>
+              <Menu.Header as="h2" className="rochester">
+                <Link to="/">Laurie Anne&apos;s Photogrpahy</Link>
+              </Menu.Header>
+            </Menu.Item>
+          </Menu>
+        </div>
         <div
           dangerouslySetInnerHTML={{ __html: HamburgerHTML }}
           onClick={this.handleContentClicker}
-          style={{ display: "table-cell", verticalAlign: "middle" }}
+          style={{
+            display: "table-cell",
+            verticalAlign: "middle",
+            position: "relative",
+            zIndex: 110
+          }}
         />
-      </div>
+      </>
     );
   }
 }

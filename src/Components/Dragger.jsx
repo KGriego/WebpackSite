@@ -88,13 +88,11 @@ class Dragger extends React.Component {
         onMouseDown={this.onMouseDown}
         onMouseMove={this.onMouseMove}
         onMouseUp={this.onMouseUp}
-        onTouchEnd={this.onMouseUp}
-        onTouchMove={this.onMouseMove}
-        onTouchStart={this.onMouseDown}
         ref={this.dragParent}
         style={{
           width: "125vw",
           backgroundColor: "red",
+          overflowX: "hidden",
           position: "relative",
           height: "300vh",
           left: `${pos.x}px`,
@@ -104,25 +102,24 @@ class Dragger extends React.Component {
         }}
       >
         <Card.Group style={{ marginTop: "1em" }}>
-          {randPic.map((item, i) => {
-            return (
-              <Card key={item.src.src} style={{ cursor: "initial" }}>
-                <Image
-                  key={item.src.src}
-                  src={item.src.src}
-                  srcSet={item.src.srcSet}
-                />
-                <Card.Content>
-                  <Card.Meta
-                    onClick={() => this.openPicture(i)}
-                    style={{ cursor: "pointer" }}
-                  >
-                    Click me to view the picture!
-                  </Card.Meta>
-                </Card.Content>
-              </Card>
-            );
-          })}
+          {randPic.map((item, i) => (
+            <Card key={item.src.src} style={{ cursor: "initial" }}>
+              <Image
+                key={item.src.src}
+                placeholder={item.src.placeholder}
+                src={item.src.src}
+                srcSet={item.src.srcSet}
+              />
+              <Card.Content>
+                <Card.Meta
+                  onClick={() => this.openPicture(i)}
+                  style={{ cursor: "pointer" }}
+                >
+                  Click me to view the picture!
+                </Card.Meta>
+              </Card.Content>
+            </Card>
+          ))}
         </Card.Group>
       </div>
     ) : (

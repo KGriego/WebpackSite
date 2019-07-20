@@ -40,27 +40,30 @@ class ShowImage extends Component {
         <div
           className="imageToShow fullscreen"
           onClick={stopShowing}
-          style={{ backgroundColor: "yellow" }}
+          style={{ backgroundColor: "yellow", zIndex: 100 }}
         />
-        <Grid centered>
-          <Grid.Row>
-            <Item onClick={this.goToPrev}>prev</Item>
-            <Item>
-              <Image
-                src={image.src.src}
-                srcSet={image.src.srcSet}
-                style={{ width: "75%" }}
-              />
-              <Item.Content>
-                <Item.Header>{image.title || "Needs a title?"}</Item.Header>
-                <Item.Description>{image.caption}</Item.Description>
-                <Item.Meta>Album: {image.albumName}</Item.Meta>
-              </Item.Content>
-            </Item>
-            <Item onClick={this.goToNext}>next</Item>
-            <Item onClick={stopShowing}>close</Item>
-          </Grid.Row>
-        </Grid>
+        <div style={{ zIndex: 101, position: "relative" }}>
+          <Grid centered>
+            <Grid.Row>
+              <Item onClick={this.goToPrev}>prev</Item>
+              <Item>
+                <Image
+                  placeholder={image.src.placeholder}
+                  src={image.src.src}
+                  srcSet={image.src.srcSet}
+                  style={{ width: "75%" }}
+                />
+                <Item.Content>
+                  <Item.Header>{image.title || "Needs a title?"}</Item.Header>
+                  <Item.Description>{image.caption}</Item.Description>
+                  <Item.Meta>Album: {image.albumName}</Item.Meta>
+                </Item.Content>
+              </Item>
+              <Item onClick={this.goToNext}>next</Item>
+              <Item onClick={stopShowing}>close</Item>
+            </Grid.Row>
+          </Grid>
+        </div>
       </>
     );
   }
