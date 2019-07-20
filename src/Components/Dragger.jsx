@@ -17,7 +17,8 @@ class Dragger extends React.Component {
       pos: { x: 0, y: 0 },
       dragging: false,
       showing: false,
-      image: {}
+      image: {},
+      imgIndex: 0
     };
   }
   componentDidMount() {
@@ -74,19 +75,22 @@ class Dragger extends React.Component {
   openPicture = i => {
     const { showing } = this.state;
     const image = tileData[i];
-    this.setState({ showing: !showing, image });
+    this.setState({ showing: !showing, image, imgIndex: i });
   };
   stopShowing = () => {
     const { showing } = this.state;
     this.setState({ showing: !showing, image: {} });
   };
   render() {
-    const { randPic, pos, image, showing } = this.state;
+    const { randPic, pos, image, showing, imgIndex } = this.state;
     return !showing ? (
       <div
         onMouseDown={this.onMouseDown}
         onMouseMove={this.onMouseMove}
         onMouseUp={this.onMouseUp}
+        onTouchEnd={this.onMouseUp}
+        onTouchMove={this.onMouseMove}
+        onTouchStart={this.onMouseDown}
         ref={this.dragParent}
         style={{
           width: "125vw",
@@ -122,7 +126,11 @@ class Dragger extends React.Component {
         </Card.Group>
       </div>
     ) : (
-      <ShowImage image={image} stopShowing={this.stopShowing} />
+      <ShowImage
+        image={image}
+        imgIndex={imgIndex}
+        stopShowing={this.stopShowing}
+      />
     );
   }
 }

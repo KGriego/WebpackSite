@@ -11,7 +11,7 @@ function Layout(props) {
   return (
     <div>
       <Header />
-      <div style={{ position: "relative" }}>{children}</div>
+      {children}
       {/* <Footer /> */}
     </div>
   );

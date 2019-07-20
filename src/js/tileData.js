@@ -40,21 +40,21 @@ import sitting1 from "../images/Albums/FamilyPhotography/sitting1.jpg";
 const tileData = [
   {
     frontPage: true,
-    albumName: "SeniorPhotography",
+    albumName: "Senior Photography",
     src: closeUp,
     caption: "Hunter Close Up, again",
     alt: "SeniorPhotography"
   },
   {
     frontPage: true,
-    albumName: "SeniorPhotography",
+    albumName: "Senior Photography",
     src: hunterClose,
     caption: "Hunter Close Up",
     alt: "SeniorPhotography"
   },
   {
     frontPage: true,
-    albumName: "SeniorPhotography",
+    albumName: "Senior Photography",
     src: HunterRoad,
     caption:
       "Graduation is right around the corner... congrats seniors! Book your senior photos with me",
@@ -62,14 +62,14 @@ const tileData = [
   },
   {
     frontPage: true,
-    albumName: "SeniorPhotography",
+    albumName: "Senior Photography",
     src: HunterSit2,
     caption: "Hunter Sit 2",
     alt: "SeniorPhotography"
   },
   {
     frontPage: true,
-    albumName: "SeniorPhotography",
+    albumName: "Senior Photography",
     src: HunterSit3,
     caption:
       "Graduation is right around the corner... congrats seniors! Book your senior photos with me",
@@ -77,7 +77,7 @@ const tileData = [
   },
   {
     frontPage: true,
-    albumName: "SeniorPhotography",
+    albumName: "Senior Photography",
     src: HunterSquat,
     caption: "Sneak peek of Hunter's Senior Photos",
     alt: "SeniorPhotography"
@@ -291,7 +291,7 @@ const tileData = [
   },
   {
     frontPage: true,
-    albumName: "SeniorPhotography",
+    albumName: "Senior Photography",
     src: leaves,
     caption: "Hunter Sitting, again, theres some leaves",
     alt: "SeniorPhotography"

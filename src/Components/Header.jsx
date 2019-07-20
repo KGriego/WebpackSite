@@ -24,7 +24,7 @@ class Header extends Component {
 
   render() {
     return (
-      <>
+      <div style={{ zIndex: 110, position: "relative" }}>
         <Menu
           borderless
           className="headerMenu headerColor removedStyles headerLineHeight"
@@ -39,13 +39,9 @@ class Header extends Component {
         <div
           dangerouslySetInnerHTML={{ __html: HamburgerHTML }}
           onClick={this.handleContentClicker}
-          style={{
-            display: "table-cell",
-            verticalAlign: "middle",
-            zIndex: 999
-          }}
+          style={{ display: "table-cell", verticalAlign: "middle" }}
         />
-      </>
+      </div>
     );
   }
 }

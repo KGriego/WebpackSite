@@ -13,13 +13,7 @@ class Home extends React.Component {
     this.state = {};
   }
   render() {
-    return (
-      <Grid>
-        <Grid.Row>
-          <Dragger />
-        </Grid.Row>
-      </Grid>
-    );
+    return <Dragger />;
   }
 }
 
