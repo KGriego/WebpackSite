@@ -18,10 +18,6 @@ class App extends Component {
     super(props);
     this.state = {};
   }
-  componentWillUpdate(data) {
-    console.log(data);
-  }
-
   render() {
     return (
       <Router history={history}>

@@ -44,7 +44,6 @@ class Dragger extends React.Component {
           }}
         >
           {randPic.map(item => {
-            console.log(item);
             return (
               <Draggable bounds="parent" key={item.src.src}>
                 <Card>
