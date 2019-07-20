@@ -47,7 +47,7 @@ const tileData = [
     alt: "SeniorPhotography",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -58,7 +58,7 @@ const tileData = [
     alt: "SeniorPhotography",
     width: 3,
     height: 5,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: true,
@@ -69,7 +69,7 @@ const tileData = [
     alt: "SeniorPhotography",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: true,
@@ -81,7 +81,7 @@ const tileData = [
     alt: "SeniorPhotography",
     width: 5,
     height: 3,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: true,
@@ -92,7 +92,7 @@ const tileData = [
     alt: "SeniorPhotography",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -104,7 +104,7 @@ const tileData = [
     alt: "SeniorPhotography",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -115,7 +115,7 @@ const tileData = [
     alt: "SeniorPhotography",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -127,7 +127,7 @@ const tileData = [
     alt: "Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -139,7 +139,7 @@ const tileData = [
     alt: "Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -150,7 +150,7 @@ const tileData = [
     alt: "Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -162,7 +162,7 @@ const tileData = [
     alt: "Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -174,7 +174,7 @@ const tileData = [
     alt: "Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -185,7 +185,7 @@ const tileData = [
     alt: "Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -196,7 +196,7 @@ const tileData = [
     alt: "Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -207,7 +207,7 @@ const tileData = [
     alt: "Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -218,7 +218,7 @@ const tileData = [
     alt: "Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -230,7 +230,7 @@ const tileData = [
     alt: "Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -242,7 +242,7 @@ const tileData = [
     alt: "Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -253,7 +253,7 @@ const tileData = [
     alt: "Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -264,7 +264,7 @@ const tileData = [
     alt: "Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -276,7 +276,7 @@ const tileData = [
     alt: "Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -287,7 +287,7 @@ const tileData = [
     alt: "Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: true,
@@ -299,7 +299,7 @@ const tileData = [
     alt: "Insects Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -310,7 +310,7 @@ const tileData = [
     alt: "Insects Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: true,
@@ -321,7 +321,7 @@ const tileData = [
     alt: "Insects Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -332,7 +332,7 @@ const tileData = [
     alt: "Insects Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: true,
@@ -343,7 +343,7 @@ const tileData = [
     alt: "Insects Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -354,7 +354,7 @@ const tileData = [
     alt: "Insects Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: true,
@@ -366,7 +366,7 @@ const tileData = [
     alt: "Insects Nature",
     width: 3,
     height: 2,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: true,
@@ -377,7 +377,7 @@ const tileData = [
     alt: "Family",
     width: 5,
     height: 3,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: true,
@@ -388,7 +388,7 @@ const tileData = [
     alt: "Family",
     width: 4,
     height: 6,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: true,
@@ -399,7 +399,7 @@ const tileData = [
     alt: "Family",
     width: 4,
     height: 6,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -410,7 +410,7 @@ const tileData = [
     alt: "Family",
     width: 4,
     height: 6,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -421,7 +421,7 @@ const tileData = [
     alt: "Family",
     width: 5,
     height: 3,
-    className: "albumPicture"
+    className: "albumPicture",
   },
   {
     frontPage: false,
@@ -432,8 +432,8 @@ const tileData = [
     alt: "Family",
     width: 5,
     height: 3,
-    className: "albumPicture"
-  }
+    className: "albumPicture",
+  },
 ];
 
 export default tileData;

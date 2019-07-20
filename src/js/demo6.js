@@ -9,8 +9,8 @@ const ease = {
     return t == 0.0 || t == 1.0
       ? t
       : t < 0.5
-      ? +0.5 * Math.pow(2.0, 20.0 * t - 10.0)
-      : -0.5 * Math.pow(2.0, 10.0 - t * 20.0) + 1.0;
+        ? +0.5 * Math.pow(2.0, 20.0 * t - 10.0)
+        : -0.5 * Math.pow(2.0, 10.0 - t * 20.0) + 1.0;
   },
   sineOut: t => {
     const HALF_PI = 1.5707963267948966;
@@ -54,7 +54,7 @@ class ShapeOverlays {
   }
   toggle() {
     this.isAnimating = true;
-    for (var i = 0; i < this.numPoints; i++) {
+    for (let i = 0; i < this.numPoints; i++) {
       this.delayPointsArray[i] = Math.random() * this.delayPointsMax;
     }
     if (this.isOpened === false) {
@@ -77,39 +77,45 @@ class ShapeOverlays {
   }
   updatePath(time) {
     const points = [];
-    for (var i = 0; i < this.numPoints; i++) {
+    for (let i = 0; i < this.numPoints; i++) {
       points[i] =
         (1 -
           ease.cubicInOut(
-            Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1)
+            Math.min(
+              Math.max(time - this.delayPointsArray[i], 0) / this.duration,
+              1
+            )
           )) *
         100;
     }
 
     let str = "";
     str += this.isOpened ? `M 0 0 V ${points[0]}` : `M 0 ${points[0]}`;
-    for (var i = 0; i < this.numPoints - 1; i++) {
+    for (let i = 0; i < this.numPoints - 1; i++) {
       const p = ((i + 1) / (this.numPoints - 1)) * 100;
       const cp = p - ((1 / (this.numPoints - 1)) * 100) / 2;
-      str += `C ${cp} ${points[i]} ${cp} ${points[i + 1]} ${p} ${points[i + 1]} `;
+      str += `C ${cp} ${points[i]} ${cp} ${points[i + 1]} ${p} ${
+        points[i + 1]
+      } `;
     }
-    str += this.isOpened ? `V 100 H 0` : `V 0 H 0`;
+    str += this.isOpened ? "V 100 H 0" : "V 0 H 0";
     return str;
   }
   render() {
     if (this.isOpened) {
-      for (var i = 0; i < this.path.length; i++) {
+      for (let i = 0; i < this.path.length; i++) {
         this.path[i].setAttribute(
           "d",
           this.updatePath(Date.now() - (this.timeStart + this.delayPerPath * i))
         );
       }
     } else {
-      for (var i = 0; i < this.path.length; i++) {
+      for (let i = 0; i < this.path.length; i++) {
         this.path[i].setAttribute(
           "d",
           this.updatePath(
-            Date.now() - (this.timeStart + this.delayPerPath * (this.path.length - i - 1))
+            Date.now() -
+              (this.timeStart + this.delayPerPath * (this.path.length - i - 1))
           )
         );
       }
@@ -119,7 +125,9 @@ class ShapeOverlays {
     this.render();
     if (
       Date.now() - this.timeStart <
-      this.duration + this.delayPerPath * (this.path.length - 1) + this.delayPointsMax
+      this.duration +
+        this.delayPerPath * (this.path.length - 1) +
+        this.delayPointsMax
     ) {
       requestAnimationFrame(() => {
         this.renderLoop();
@@ -143,12 +151,12 @@ function hamburger() {
     overlay.toggle();
     if (overlay.isOpened === true) {
       elmHamburger.classList.add("is-opened-navi");
-      for (var i = 0; i < gNavItems.length; i++) {
+      for (let i = 0; i < gNavItems.length; i++) {
         gNavItems[i].classList.add("is-opened");
       }
     } else {
       elmHamburger.classList.remove("is-opened-navi");
-      for (var i = 0; i < gNavItems.length; i++) {
+      for (let i = 0; i < gNavItems.length; i++) {
         gNavItems[i].classList.remove("is-opened");
       }
     }

@@ -9,7 +9,7 @@ import Layout from "./Components/Layout";
 import Home from "./Pages/Home";
 
 /* Style Imports */
-import "./App.scss";
+import "./SCSS/App.scss";
 
 const history = createBrowserHistory();
 
@@ -27,21 +27,9 @@ class App extends Component {
       <Router history={history}>
         <Layout>
           <Switch>
-            <Route path={"/"} exact render={() => <Home />} />
-            <Route
-              path={"/AboutMe"}
-              exact
-              render={() => {
-                return <h1>this is me </h1>;
-              }}
-            />
-            <Route
-              path={"/ContactUs"}
-              exact
-              render={() => {
-                return <h1>hello </h1>;
-              }}
-            />
+            <Route exact path="/" render={() => <Home />} />
+            <Route exact path="/AboutMe" render={() => <h1>this is me</h1>} />
+            <Route exact path="/ContactUs" render={() => <h1>hello</h1>} />
           </Switch>
         </Layout>
       </Router>

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --open --mode development --config webpack.config.js",
     "build": "cross-env NODE_ENV=PROD webpack --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --fix ./src"
   },
   "author": "Midlu",
   "license": "ISC",
@@ -41,13 +42,14 @@
   },
   "dependencies": {
     "aphrodite": "^0.5.0",
+    "eslint-plugin-react": "^7.14.2",
     "prop-types": "^15.6.0",
-    "react-scrolllock": "^2.0.1",
-    "react-transition-group": "2",
     "react": "^16.8.6",
     "react-animated-slider": "^1.1.4",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
+    "react-scrolllock": "^2.0.1",
+    "react-transition-group": "2",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.87.3"
   }
