@@ -7,10 +7,11 @@ import Header from "./Header";
 /* Style Imports */
 
 function Layout(props) {
+  const { children } = props;
   return (
     <div>
       <Header />
-      {props.children}
+      <div style={{ position: "relative" }}>{children}</div>
       {/* <Footer /> */}
     </div>
   );

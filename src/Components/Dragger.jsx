@@ -5,6 +5,7 @@ import { Card, Image, Grid } from "semantic-ui-react";
 /* Redux Imports */
 
 /* Component Imports */
+import ShowImage from "./ShowImage";
 import tileData from "../js/tileData";
 
 class Dragger extends React.Component {
@@ -14,7 +15,9 @@ class Dragger extends React.Component {
     this.state = {
       randPic: [],
       pos: { x: 0, y: 0 },
-      dragging: false
+      dragging: false,
+      showing: false,
+      image: {}
     };
   }
   componentDidMount() {
@@ -39,22 +42,18 @@ class Dragger extends React.Component {
     e.stopPropagation();
     e.preventDefault();
     // only left mouse button
-    if (e.button !== 0) return;
+    if (e.button !== 0 || e.target.className.includes("meta")) return;
     const { current } = this.dragParent;
-
-    let pos = {
-      top: current.offsetTop,
-      left: current.offsetLeft
-    };
+    let pos = { top: current.offsetTop, left: current.offsetLeft };
     this.setState({
       dragging: true,
       rel: { x: e.pageX - pos.left, y: e.pageY - pos.top }
     });
   };
   onMouseUp = e => {
-    this.setState({ dragging: false });
     e.stopPropagation();
     e.preventDefault();
+    this.setState({ dragging: false });
   };
   onMouseMove = e => {
     e.stopPropagation();
@@ -72,21 +71,27 @@ class Dragger extends React.Component {
     }, []);
     this.setState({ randPic: pics });
   };
-  openPicture = () => {
-    console.log("hey");
+  openPicture = i => {
+    const { showing } = this.state;
+    const image = tileData[i];
+    this.setState({ showing: !showing, image });
+  };
+  stopShowing = () => {
+    const { showing } = this.state;
+    this.setState({ showing: !showing, image: {} });
   };
   render() {
-    const { randPic, pos } = this.state;
-    return (
+    const { randPic, pos, image, showing } = this.state;
+    return !showing ? (
       <div
         onMouseDown={this.onMouseDown}
         onMouseMove={this.onMouseMove}
         onMouseUp={this.onMouseUp}
         ref={this.dragParent}
         style={{
-          width: "100vw",
+          width: "125vw",
           backgroundColor: "red",
-          position: "absolute",
+          position: "relative",
           height: "300vh",
           left: `${pos.x}px`,
           top: `${pos.y}px`,
@@ -95,16 +100,19 @@ class Dragger extends React.Component {
         }}
       >
         <Card.Group style={{ marginTop: "1em" }}>
-          {randPic.map(item => {
+          {randPic.map((item, i) => {
             return (
-              <Card key={item.src.src}>
+              <Card key={item.src.src} style={{ cursor: "initial" }}>
                 <Image
                   key={item.src.src}
                   src={item.src.src}
                   srcSet={item.src.srcSet}
                 />
                 <Card.Content>
-                  <Card.Meta onClick={this.openPicture}>
+                  <Card.Meta
+                    onClick={() => this.openPicture(i)}
+                    style={{ cursor: "pointer" }}
+                  >
                     Click me to view the picture!
                   </Card.Meta>
                 </Card.Content>
@@ -113,6 +121,8 @@ class Dragger extends React.Component {
           })}
         </Card.Group>
       </div>
+    ) : (
+      <ShowImage image={image} stopShowing={this.stopShowing} />
     );
   }
 }

@@ -7,8 +7,20 @@ import { Grid } from "semantic-ui-react";
 /* Component Imports */
 import Dragger from "../Components/Dragger";
 
-function Home() {
-  return <Dragger />;
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    return (
+      <Grid>
+        <Grid.Row>
+          <Dragger />
+        </Grid.Row>
+      </Grid>
+    );
+  }
 }
 
 export default Home;
