@@ -11,12 +11,8 @@ class Dragger extends React.Component {
     super(props);
     this.dragParent = React.createRef();
     this.state = {
-      randPic: [],
       pos: { x: 0, y: 0 },
-      dragging: false,
-      showing: false,
-      image: {},
-      imgIndex: 0
+      dragging: false
     };
   }
   // we could get away with not having this (and just having the listeners on

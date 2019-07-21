@@ -7,6 +7,7 @@ import { createBrowserHistory } from "history";
 /* Component Imports */
 import Layout from "./Components/Layout";
 import Home from "./Pages/Home";
+import About from "./Pages/About";
 
 /* Style Imports */
 import "./SCSS/App.scss";
@@ -24,7 +25,7 @@ class App extends Component {
         <Layout>
           <Switch>
             <Route exact path="/" render={() => <Home />} />
-            <Route exact path="/AboutMe" render={() => <h1>this is me</h1>} />
+            <Route exact path="/About" render={() => <About />} />
             <Route exact path="/ContactUs" render={() => <h1>hello</h1>} />
           </Switch>
         </Layout>

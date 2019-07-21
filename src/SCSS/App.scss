@@ -10,9 +10,16 @@
 @import "./Dragger.scss";
 
 body {
-  background-color: red;
+  background-color: yellow;
 }
 
 a:hover {
   text-decoration: underline;
+}
+
+.App {
+  *::-webkit-scrollbar {
+    width: 0px; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+  }
 }

@@ -10,7 +10,7 @@ function Layout(props) {
   const { children } = props;
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       {children}
       {/* <Footer /> */}
     </div>

@@ -1,0 +1,9 @@
+.dragger {
+  &.zoomOut {
+    transform: translate3d(0px, -63px, 0px);
+    -moz-transform: translate3d(0px, -63px, 0px);
+    -ms-transform: translate3d(0px, -63px, 0px);
+    -webkit-transform: translate3d(0px, -63px, 0px);
+    -o-transform: translate3d(0px, -63px, 0px);
+  }
+}
