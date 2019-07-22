@@ -1,46 +1,51 @@
 /* Library Imports */
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { TweenMax, Sine } from "gsap";
 
 /* Redux Imports */
 
 /* Component Imports */
-import Stuff from "../Components/Stuff";
+import PixiContainer from "../Components/PixiContainer";
 
-const About = () => {
-  let logoElement = useRef(null);
-
-  useEffect(() => {
-    TweenMax.to(logoElement, 1, {
-      repeat: -1,
-      ease: Sine.easeNone
-    });
-  }, []);
-
-  function scaleNormal() {
-    TweenMax.to(logoElement, 1, { scale: 1, ease: Sine.ease });
+class About extends React.Component {
+  constructor(props) {
+    super(props);
+    this.logoElement = React.createRef();
+    this._xLast = 0;
+    this._yLast = 0;
+    this._xTo = 0;
+    this._yTo = 0;
+    this.state = {};
   }
 
-  function scaleDown() {
-    TweenMax.to(logoElement, 1, { scale: 0.9 });
-  }
-  return (
-    <div className={"App"}>
-      <div
-        onMouseDown={scaleDown}
-        onMouseUp={scaleNormal}
-        ref={element => (logoElement = element)}
-        style={{
-          border: "2px black solid",
-          height: "100vh",
-          width: "100vw",
-          overflow: "hidden"
-        }}
-      >
-        <Stuff />
+  scaleNormal = () =>
+    TweenMax.to(this.logoElement, 1, { scale: 1, ease: Sine.ease });
+  scaleDown = e => {
+    this._xLast = e.clientX;
+    this._yLast = e.clientY;
+    TweenMax.to(this.logoElement, 1, { scale: 0.9 });
+  };
+
+  render() {
+    return (
+      <div className={"App"}>
+        <div
+          onMouseDown={this.scaleDown}
+          onMouseLeave={this.scaleNormal}
+          onMouseUp={this.scaleNormal}
+          ref={element => (this.logoElement = element)}
+          style={{
+            border: "2px black solid",
+            height: "100vh",
+            width: "100vw",
+            overflow: "hidden"
+          }}
+        >
+          <PixiContainer />
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default About;
