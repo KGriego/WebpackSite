@@ -20,11 +20,11 @@ function _defineProperty(obj, key, value) {
 function _extends() {
   _extends =
     Object.assign ||
-    function(target) {
-      for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i];
+    function (target) {
+      for (let i = 1; i < arguments.length; i++) {
+        let source = arguments[i];
 
-        for (var key in source) {
+        for (let key in source) {
           if (Object.prototype.hasOwnProperty.call(source, key)) {
             target[key] = source[key];
           }
@@ -37,19 +37,19 @@ function _extends() {
 }
 
 function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
+  for (let i = 1; i < arguments.length; i++) {
+    let source = arguments[i] != null ? arguments[i] : {};
+    let ownKeys = Object.keys(source);
 
     if (typeof Object.getOwnPropertySymbols === "function") {
       ownKeys = ownKeys.concat(
-        Object.getOwnPropertySymbols(source).filter(function(sym) {
+        Object.getOwnPropertySymbols(source).filter(function (sym) {
           return Object.getOwnPropertyDescriptor(source, sym).enumerable;
         })
       );
     }
 
-    ownKeys.forEach(function(key) {
+    ownKeys.forEach(function (key) {
       _defineProperty(target, key, source[key]);
     });
   }
@@ -59,9 +59,9 @@ function _objectSpread(target) {
 
 function _objectWithoutPropertiesLoose(source, excluded) {
   if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
+  let target = {};
+  let sourceKeys = Object.keys(source);
+  let key, i;
 
   for (i = 0; i < sourceKeys.length; i++) {
     key = sourceKeys[i];
@@ -75,12 +75,12 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 function _objectWithoutProperties(source, excluded) {
   if (source == null) return {};
 
-  var target = _objectWithoutPropertiesLoose(source, excluded);
+  let target = _objectWithoutPropertiesLoose(source, excluded);
 
-  var key, i;
+  let key, i;
 
   if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+    let sourceSymbolKeys = Object.getOwnPropertySymbols(source);
 
     for (i = 0; i < sourceSymbolKeys.length; i++) {
       key = sourceSymbolKeys[i];
@@ -104,14 +104,14 @@ function _arrayWithHoles(arr) {
 }
 
 function _iterableToArrayLimit(arr, i) {
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
+  let _arr = [];
+  let _n = true;
+  let _d = false;
+  let _e = undefined;
 
   try {
     for (
-      var _i = arr[Symbol.iterator](), _s;
+      let _i = arr[Symbol.iterator](), _s;
       !(_n = (_s = _i.next()).done);
       _n = true
     ) {
@@ -137,10 +137,10 @@ function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance");
 }
 
-var imgWithClick = { cursor: "pointer" };
+let imgWithClick = { cursor: "pointer" };
 
-var Photo = function Photo(_ref) {
-  var index = _ref.index,
+let Photo = function Photo(_ref) {
+  let index = _ref.index,
     onClick = _ref.onClick,
     photo = _ref.photo,
     margin = _ref.margin,
@@ -148,7 +148,7 @@ var Photo = function Photo(_ref) {
     top = _ref.top,
     left = _ref.left,
     key = _ref.key;
-  var imgStyle = { margin: margin, display: "block" };
+  let imgStyle = { margin: margin, display: "block" };
 
   if (direction === "column") {
     imgStyle.position = "absolute";
@@ -156,7 +156,7 @@ var Photo = function Photo(_ref) {
     imgStyle.top = top;
   }
 
-  var handleClick = function handleClick(event) {
+  let handleClick = function handleClick(event) {
     onClick(event, { photo, index });
   };
 
@@ -173,7 +173,7 @@ var Photo = function Photo(_ref) {
   );
 };
 
-var photoPropType = PropTypes.shape({
+let photoPropType = PropTypes.shape({
   key: PropTypes.string,
   src: PropTypes.string.isRequired,
   width: PropTypes.number.isRequired,
@@ -184,17 +184,8 @@ var photoPropType = PropTypes.shape({
   sizes: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
 });
 Photo.propTypes = {
+  direction: PropTypes.string,
   index: PropTypes.number.isRequired,
-  onClick: PropTypes.func,
-  photo: photoPropType.isRequired,
-  margin: PropTypes.number,
-  top: function top(props) {
-    if (props.direction === "column" && typeof props.top !== "number") {
-      return new Error(
-        "top is a required number when direction is set to `column`"
-      );
-    }
-  },
   left: function left(props) {
     if (props.direction === "column" && typeof props.left !== "number") {
       return new Error(
@@ -202,24 +193,33 @@ Photo.propTypes = {
       );
     }
   },
-  direction: PropTypes.string
+  margin: PropTypes.number,
+  onClick: PropTypes.func,
+  photo: photoPropType.isRequired,
+  top: function top(props) {
+    if (props.direction === "column" && typeof props.top !== "number") {
+      return new Error(
+        "top is a required number when direction is set to `column`"
+      );
+    }
+  }
 };
 
-var round = function round(value, decimals) {
+let round = function round(value, decimals) {
   if (!decimals) decimals = 0;
   return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
 };
 
-var computeColumnLayout = function computeColumnLayout(_ref) {
-  var photos = _ref.photos,
+let computeColumnLayout = function computeColumnLayout(_ref) {
+  let photos = _ref.photos,
     columns = _ref.columns,
     containerWidth = _ref.containerWidth,
     margin = _ref.margin;
   // calculate each colWidth based on total width and column amount
-  var colWidth = (containerWidth - margin * 2 * columns) / columns; // map through each photo to assign adjusted height and width based on colWidth
+  let colWidth = (containerWidth - margin * 2 * columns) / columns; // map through each photo to assign adjusted height and width based on colWidth
 
-  var photosWithSizes = photos.map(function(photo) {
-    var newHeight = (photo.height / photo.width) * colWidth;
+  let photosWithSizes = photos.map(function (photo) {
+    let newHeight = (photo.height / photo.width) * colWidth;
     return _objectSpread({}, photo, {
       width: round(colWidth, 1),
       height: round(newHeight, 1)
@@ -227,18 +227,18 @@ var computeColumnLayout = function computeColumnLayout(_ref) {
   }); // store all possible left positions
   // and current top positions for each column
 
-  var colLeftPositions = [];
-  var colCurrTopPositions = [];
+  let colLeftPositions = [];
+  let colCurrTopPositions = [];
 
-  for (var i = 0; i < columns; i++) {
+  for (let i = 0; i < columns; i++) {
     colLeftPositions[i] = round(i * (colWidth + margin * 2), 1);
     colCurrTopPositions[i] = 0;
   } // map through each photo, then reduce thru each "column"
   // find column with the smallest height and assign to photo's 'top'
   // update that column's height with this photo's height
 
-  var photosPositioned = photosWithSizes.map(function(photo) {
-    var smallestCol = colCurrTopPositions.reduce(function(acc, item, i) {
+  let photosPositioned = photosWithSizes.map(function (photo) {
+    let smallestCol = colCurrTopPositions.reduce(function (acc, item, i) {
       acc = item < colCurrTopPositions[acc] ? i : acc;
       return acc;
     }, 0);
@@ -247,7 +247,7 @@ var computeColumnLayout = function computeColumnLayout(_ref) {
     colCurrTopPositions[smallestCol] =
       colCurrTopPositions[smallestCol] + photo.height + margin * 2; // store the tallest col to use for gallery height because of abs positioned elements
 
-    var tallestCol = colCurrTopPositions.reduce(function(acc, item, i) {
+    let tallestCol = colCurrTopPositions.reduce(function (acc, item, i) {
       acc = item > colCurrTopPositions[acc] ? i : acc;
       return acc;
     }, 0);
@@ -257,8 +257,8 @@ var computeColumnLayout = function computeColumnLayout(_ref) {
   return photosPositioned;
 };
 
-var ratio = function ratio(_ref) {
-  var width = _ref.width,
+let ratio = function ratio(_ref) {
+  let width = _ref.width,
     height = _ref.height;
   return round(width / height, 2);
 };
@@ -285,9 +285,9 @@ BinaryHeap.prototype = {
   },
   pop: function pop() {
     // Store the first element so we can return it later.
-    var result = this.content[0]; // Get the element at the end of the array.
+    let result = this.content[0]; // Get the element at the end of the array.
 
-    var end = this.content.pop(); // If there are any elements left, put the end element at the
+    let end = this.content.pop(); // If there are any elements left, put the end element at the
     // start, and let it sink down.
 
     if (this.content.length > 0) {
@@ -298,14 +298,14 @@ BinaryHeap.prototype = {
     return result;
   },
   remove: function remove(node) {
-    var length = this.content.length; // To remove a value, we must search through the array to find
+    let length = this.content.length; // To remove a value, we must search through the array to find
     // it.
 
-    for (var i = 0; i < length; i++) {
+    for (let i = 0; i < length; i++) {
       if (this.content[i] != node) continue; // When it is found, the process seen in 'pop' is repeated
       // to fill up the hole.
 
-      var end = this.content.pop(); // If the element we popped was the one we needed to remove,
+      let end = this.content.pop(); // If the element we popped was the one we needed to remove,
       // we're done.
 
       if (i == length - 1) break; // Otherwise, we replace the removed element with the popped
@@ -322,12 +322,12 @@ BinaryHeap.prototype = {
   },
   bubbleUp: function bubbleUp(n) {
     // Fetch the element that has to be moved.
-    var element = this.content[n],
+    let element = this.content[n],
       score = this.scoreFunction(element); // When at 0, an element can not go up any further.
 
     while (n > 0) {
       // Compute the parent element's index, and fetch it.
-      var parentN = Math.floor((n + 1) / 2) - 1,
+      let parentN = Math.floor((n + 1) / 2) - 1,
         parent = this.content[parentN]; // If the parent has a lesser score, things are in order and we
       // are done.
 
@@ -341,30 +341,30 @@ BinaryHeap.prototype = {
   },
   sinkDown: function sinkDown(n) {
     // Look up the target element and its score.
-    var length = this.content.length,
+    let length = this.content.length,
       element = this.content[n],
       elemScore = this.scoreFunction(element);
 
     while (true) {
       // Compute the indices of the child elements.
-      var child2N = (n + 1) * 2,
+      let child2N = (n + 1) * 2,
         child1N = child2N - 1; // This is used to store the new position of the element,
       // if any.
 
-      var swap = null; // If the first child exists (is inside the array)...
+      let swap = null; // If the first child exists (is inside the array)...
 
       if (child1N < length) {
         // Look it up and compute its score.
-        var child1 = this.content[child1N],
+        let child1 = this.content[child1N],
           child1Score = this.scoreFunction(child1); // If the score is less than our element's, we need to swap.
 
         if (child1Score < elemScore) swap = child1N;
       } // Do the same checks for the other child.
 
       if (child2N < length) {
-        var child2 = this.content[child2N],
+        let child2 = this.content[child2N],
           child2Score = this.scoreFunction(child2);
-        if (child2Score < (swap == null ? elemScore : child1Score))
+        if (child2Score < (swap == null ? elemScore : child2Score))
           swap = child2N;
       } // No need to swap further, we are done.
 
@@ -377,22 +377,22 @@ BinaryHeap.prototype = {
   }
 };
 
-var buildPrecedentsMap = function buildPrecedentsMap(
+let buildPrecedentsMap = function buildPrecedentsMap(
   graph,
   startNode,
   endNode
 ) {
   // store the previous vertex of the shortest path of arrival
-  var precedentsMap = {}; // store nodes already visited
+  let precedentsMap = {}; // store nodes already visited
 
-  var visited = {}; // store/update only the shortest edge weights measured
+  let visited = {}; // store/update only the shortest edge weights measured
   // the purpose of this is object is constant time lookup vs. binary heap lookup O(n)
 
-  var storedShortestPaths = {};
+  let storedShortestPaths = {};
   storedShortestPaths[startNode] = 0; // priority queue of ALL nodes and storedShortestPaths
   // don't bother to delete them because it's faster to look at visited?
 
-  var pQueue = new BinaryHeap(function(n) {
+  let pQueue = new BinaryHeap(function (n) {
     return n.weight;
   });
   pQueue.push({
@@ -402,17 +402,17 @@ var buildPrecedentsMap = function buildPrecedentsMap(
 
   while (pQueue.size()) {
     // pop node with shortest total weight from start node
-    var shortestNode = pQueue.pop();
-    var shortestNodeId = shortestNode.id; // if already visited, continue
+    let shortestNode = pQueue.pop();
+    let shortestNodeId = shortestNode.id; // if already visited, continue
 
     if (visited[shortestNodeId]) continue; // visit neighboring nodes
 
-    var neighboringNodes = graph(shortestNodeId) || {};
+    let neighboringNodes = graph(shortestNodeId) || {};
     visited[shortestNodeId] = 1; // meet the neighbors, looking for shorter paths
 
-    for (var neighbor in neighboringNodes) {
+    for (let neighbor in neighboringNodes) {
       // weight of path from startNode to this neighbor
-      var newTotalWeight = shortestNode.weight + neighboringNodes[neighbor]; // if this is the first time meeting the neighbor OR if the new total weight from
+      let newTotalWeight = shortestNode.weight + neighboringNodes[neighbor]; // if this is the first time meeting the neighbor OR if the new total weight from
       // start node to this neighbor node is greater than the old weight path, update it,
       // and update precedent node
 
@@ -439,13 +439,13 @@ var buildPrecedentsMap = function buildPrecedentsMap(
   return precedentsMap;
 }; // build the route from precedent node vertices
 
-var getPathFromPrecedentsMap = function getPathFromPrecedentsMap(
+let getPathFromPrecedentsMap = function getPathFromPrecedentsMap(
   precedentsMap,
   endNode
 ) {
-  var nodes = [];
-  var n = endNode;
-  var precedent;
+  let nodes = [];
+  let n = endNode;
+  let precedent;
 
   while (n) {
     nodes.push(n);
@@ -456,41 +456,41 @@ var getPathFromPrecedentsMap = function getPathFromPrecedentsMap(
   return nodes.reverse();
 }; // build the precedentsMap and find the shortest path from it
 
-var findShortestPath = function findShortestPath(graph, startNode, endNode) {
-  var precedentsMap = buildPrecedentsMap(graph, startNode, endNode);
+let findShortestPath = function findShortestPath(graph, startNode, endNode) {
+  let precedentsMap = buildPrecedentsMap(graph, startNode, endNode);
   return getPathFromPrecedentsMap(precedentsMap, endNode);
 };
 
 // to calculate the single best layout using Dijkstra's findShortestPat
 // get the height for a set of photos in a potential row
 
-var getCommonHeight = function getCommonHeight(row, containerWidth, margin) {
-  var rowWidth = containerWidth - row.length * (margin * 2);
-  var totalAspectRatio = row.reduce(function(acc, photo) {
+let getCommonHeight = function getCommonHeight(row, containerWidth, margin) {
+  let rowWidth = containerWidth - row.length * (margin * 2);
+  let totalAspectRatio = row.reduce(function (acc, photo) {
     return acc + ratio(photo);
   }, 0);
   return rowWidth / totalAspectRatio;
 }; // calculate the cost of breaking at this node (edge weight)
 
-var cost = function cost(photos, i, j, width, targetHeight, margin) {
-  var row = photos.slice(i, j);
-  var commonHeight = getCommonHeight(row, width, margin);
+let cost = function cost(photos, i, j, width, targetHeight, margin) {
+  let row = photos.slice(i, j);
+  let commonHeight = getCommonHeight(row, width, margin);
   return Math.pow(Math.abs(commonHeight - targetHeight), 2);
 }; // return function that gets the neighboring nodes of node and returns costs
 
-var makeGetNeighbors = function makeGetNeighbors(
+let makeGetNeighbors = function makeGetNeighbors(
   targetHeight,
   containerWidth,
   photos,
   limitNodeSearch,
   margin
 ) {
-  return function(start) {
-    var results = {};
+  return function (start) {
+    let results = {};
     start = +start;
     results[+start] = 0;
 
-    for (var i = start + 1; i < photos.length + 1; ++i) {
+    for (let i = start + 1; i < photos.length + 1; ++i) {
       if (i - start > limitNodeSearch) break;
       results[i.toString()] = cost(
         photos,
@@ -506,30 +506,30 @@ var makeGetNeighbors = function makeGetNeighbors(
   };
 };
 
-var computeRowLayout = function computeRowLayout(_ref) {
-  var containerWidth = _ref.containerWidth,
+let computeRowLayout = function computeRowLayout(_ref) {
+  let containerWidth = _ref.containerWidth,
     limitNodeSearch = _ref.limitNodeSearch,
     targetRowHeight = _ref.targetRowHeight,
     margin = _ref.margin,
     photos = _ref.photos;
   // const t = +new Date();
-  var getNeighbors = makeGetNeighbors(
+  let getNeighbors = makeGetNeighbors(
     targetRowHeight,
     containerWidth,
     photos,
     limitNodeSearch,
     margin
   );
-  var path = findShortestPath(getNeighbors, "0", photos.length);
-  path = path.map(function(node) {
+  let path = findShortestPath(getNeighbors, "0", photos.length);
+  path = path.map(function (node) {
     return +node;
   }); // console.log(`time to find the shortest path: ${(+new Date() - t)} ms`);
 
-  for (var i = 1; i < path.length; ++i) {
-    var row = photos.slice(path[i - 1], path[i]);
-    var height = getCommonHeight(row, containerWidth, margin);
+  for (let i = 1; i < path.length; ++i) {
+    let row = photos.slice(path[i - 1], path[i]);
+    let height = getCommonHeight(row, containerWidth, margin);
 
-    for (var j = path[i - 1]; j < path[i]; ++j) {
+    for (let j = path[i - 1]; j < path[i]; ++j) {
       photos[j].width = round(height * ratio(photos[j]), 1);
       photos[j].height = height;
     }
@@ -541,15 +541,15 @@ var computeRowLayout = function computeRowLayout(_ref) {
 // the aspect ratio of the container with images having an avg AR of 1.5
 // as the minimum amount of photos per row, plus some nodes
 
-var findIdealNodeSearch = function findIdealNodeSearch(_ref) {
-  var targetRowHeight = _ref.targetRowHeight,
+let findIdealNodeSearch = function findIdealNodeSearch(_ref) {
+  let targetRowHeight = _ref.targetRowHeight,
     containerWidth = _ref.containerWidth;
-  var rowAR = containerWidth / targetRowHeight;
+  let rowAR = containerWidth / targetRowHeight;
   return round(rowAR / 1.5) + 8;
 };
 
-var Gallery = React.memo(function Gallery(_ref) {
-  var photos = _ref.photos,
+let Gallery = React.memo(function Gallery(_ref) {
+  let photos = _ref.photos,
     onClick = _ref.onClick,
     direction = _ref.direction,
     margin = _ref.margin,
@@ -558,35 +558,35 @@ var Gallery = React.memo(function Gallery(_ref) {
     columns = _ref.columns,
     renderImage = _ref.renderImage;
 
-  var _useState = useState(0),
+  let _useState = useState(0),
     _useState2 = _slicedToArray(_useState, 2),
     containerWidth = _useState2[0],
     setContainerWidth = _useState2[1];
 
-  var galleryEl = useRef(null);
-  useLayoutEffect(function() {
-    var animationFrameID = null;
-    var observer = new ResizeObserver(function(entries) {
+  let galleryEl = useRef(null);
+  useLayoutEffect(function () {
+    let animationFrameID = null;
+    let observer = new ResizeObserver(function (entries) {
       // only do something if width changes
-      var newWidth = entries[0].contentRect.width;
+      let newWidth = entries[0].contentRect.width;
 
       if (containerWidth !== newWidth) {
         // put in an animation frame to stop "benign errors" from
         // ResizObserver https://stackoverflow.com/questions/49384120/resizeobserver-loop-limit-exceeded
-        animationFrameID = window.requestAnimationFrame(function() {
+        animationFrameID = window.requestAnimationFrame(function () {
           setContainerWidth(Math.floor(newWidth));
         });
       }
     });
     observer.observe(galleryEl.current);
-    return function() {
+    return function () {
       observer.disconnect();
       window.cancelAnimationFrame(animationFrameID);
     };
   });
 
-  var handleClick = function handleClick(event, _ref2) {
-    var index = _ref2.index;
+  let handleClick = function handleClick(event, _ref2) {
+    let index = _ref2.index;
     onClick(event, {
       index: index,
       photo: photos[index],
@@ -598,8 +598,8 @@ var Gallery = React.memo(function Gallery(_ref) {
   if (!containerWidth)
     return React.createElement("div", { ref: galleryEl }, "\xA0"); // subtract 1 pixel because the browser may round up a pixel
 
-  var width = containerWidth - 1;
-  var galleryStyle, thumbs;
+  let width = containerWidth - 1;
+  let galleryStyle, thumbs;
 
   if (direction === "row") {
     // allow user to calculate limitNodeSearch from containerWidth
@@ -655,15 +655,15 @@ var Gallery = React.memo(function Gallery(_ref) {
     galleryStyle.height = thumbs[thumbs.length - 1].containerHeight;
   }
 
-  var renderComponent = renderImage || Photo;
+  let renderComponent = renderImage || Photo;
   return React.createElement(
     "div",
     { className: "react-photo-gallery--gallery" },
     React.createElement(
       "div",
       { ref: galleryEl, style: galleryStyle, className: "ui cards" },
-      thumbs.map(function(thumb, index) {
-        var left = thumb.left,
+      thumbs.map(function (thumb, index) {
+        let left = thumb.left,
           top = thumb.top,
           containerHeight = thumb.containerHeight,
           photo = _objectWithoutProperties(thumb, [
@@ -687,14 +687,14 @@ var Gallery = React.memo(function Gallery(_ref) {
   );
 });
 Gallery.propTypes = {
-  photos: PropTypes.arrayOf(photoPropType).isRequired,
-  direction: PropTypes.string,
-  onClick: PropTypes.func,
   columns: PropTypes.oneOfType([PropTypes.func, PropTypes.number]),
-  targetRowHeight: PropTypes.oneOfType([PropTypes.func, PropTypes.number]),
+  direction: PropTypes.string,
   limitNodeSearch: PropTypes.oneOfType([PropTypes.func, PropTypes.number]),
   margin: PropTypes.number,
-  renderImage: PropTypes.func
+  onClick: PropTypes.func,
+  photos: PropTypes.arrayOf(photoPropType).isRequired,
+  renderImage: PropTypes.func,
+  targetRowHeight: PropTypes.oneOfType([PropTypes.func, PropTypes.number])
 };
 Gallery.defaultProps = {
   margin: 2,

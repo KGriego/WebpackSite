@@ -1,6 +1,6 @@
 /* Library Imports */
 import React from "react";
-import { Stage, Container } from "react-pixi-fiber";
+import { Container } from "react-pixi-fiber";
 import * as PIXI from "pixi.js";
 
 /* Redux Imports */

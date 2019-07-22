@@ -5,39 +5,43 @@ import { Menu } from "semantic-ui-react";
 /* Component Imports */
 
 class SideBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   render() {
     const { hidden, handleMenuState, activeItem } = this.props;
     return (
       <div className={`sideNav ${hidden && "show-menu"}`}>
-        <Menu size="huge" secondary vertical style={{ marginTop: 20 }}>
+        <Menu secondary size="huge" style={{ marginTop: 20 }} vertical>
           <Menu.Item
+            active={activeItem === "home"}
             as="div"
             name="home"
-            active={activeItem === "home"}
             onClick={handleMenuState}
           />
           <Menu.Item
+            active={activeItem === "services"}
             as="div"
             name="services"
-            active={activeItem === "services"}
             onClick={handleMenuState}
           />
           <Menu.Item
+            active={activeItem === "resources"}
             as="div"
             name="resources"
-            active={activeItem === "resources"}
             onClick={handleMenuState}
           />
           <Menu.Item
+            active={activeItem === "aboutUs"}
             as="div"
             name="aboutUs"
-            active={activeItem === "aboutUs"}
             onClick={handleMenuState}
           />
           <Menu.Item
+            active={activeItem === "contactInfo"}
             as="div"
             name="contactInfo"
-            active={activeItem === "contactInfo"}
             onClick={handleMenuState}
           />
         </Menu>

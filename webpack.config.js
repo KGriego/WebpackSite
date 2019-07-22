@@ -60,7 +60,7 @@ module.exports = {
           sizes: [640, 768, 1024, 1366, 1600, 1920],
           placeholder: true,
           placeholderSize: 50,
-          quality: 55,
+          quality: 55
           // disable: isDevelopment ? true : false
         }
       }

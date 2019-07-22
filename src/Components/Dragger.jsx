@@ -61,6 +61,7 @@ class Dragger extends React.Component {
     return (
       <div
         onMouseDown={this.onMouseDown}
+        onMouseLeave={this.onMouseUp}
         onMouseMove={this.onMouseMove}
         onMouseUp={this.onMouseUp}
         ref={this.dragParent}
@@ -76,6 +77,8 @@ class Dragger extends React.Component {
           padding: 50
         }}
       >
+        <a href={"/About"}>About</a>
+        <br />
         <Galleria />
       </div>
     );

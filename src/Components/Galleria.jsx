@@ -12,11 +12,11 @@ import tileData from "../js/tileData";
 function _extends() {
   _extends =
     Object.assign ||
-    function(target) {
-      for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i];
+    function (target) {
+      for (let i = 1; i < arguments.length; i++) {
+        let source = arguments[i];
 
-        for (var key in source) {
+        for (let key in source) {
           if (Object.prototype.hasOwnProperty.call(source, key)) {
             target[key] = source[key];
           }
@@ -83,12 +83,12 @@ class Dragger extends React.Component {
     });
   };
   render() {
-    const { gallery } = this.state;
+    const { gallery, lightboxIsOpen, currentImage } = this.state;
     return (
-      <>
+      <div style={{ marginTop: 100 }}>
         <Gallery
-          photos={gallery}
           direction={"column"}
+          photos={gallery}
           renderImage={image => {
             const { photo, onClick, margin, left, top, key, index } = image;
             const imgStyle = { margin, display: "block", cursor: "pointer" };
@@ -102,19 +102,19 @@ class Dragger extends React.Component {
             });
             return (
               <Card
-                style={{ ...props.style }}
+                className={"notDraggable"}
                 key={key}
                 onClick={this.openLightbox}
-                className={"notDraggable"}
+                style={{ ...props.style }}
               >
                 <Image
+                  className={"notDraggable"}
                   data-key={index}
                   src={props.src}
                   srcSet={props.srcSet}
-                  className={"notDraggable"}
                 />
                 <Card.Content className={"notDraggable"}>
-                  <Card.Meta onClick={() => {}} className={"notDraggable"}>
+                  <Card.Meta className={"notDraggable"} onClick={() => {}}>
                     Click me to view the picture!
                   </Card.Meta>
                 </Card.Content>
@@ -123,16 +123,16 @@ class Dragger extends React.Component {
           }}
         />
         <Lightbox
-          backdropClosesModal={true}
+          backdropClosesModal
+          currentImage={currentImage}
           images={gallery}
-          onClose={this.closeLightbox}
-          onClickPrev={this.gotoPrevious}
-          onClickNext={this.gotoNext}
+          isOpen={lightboxIsOpen}
           onClickImage={this.goToAlbum}
-          currentImage={this.state.currentImage}
-          isOpen={this.state.lightboxIsOpen}
+          onClickNext={this.gotoNext}
+          onClickPrev={this.gotoPrevious}
+          onClose={this.closeLightbox}
         />
-      </>
+      </div>
     );
   }
 }

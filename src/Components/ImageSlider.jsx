@@ -10,7 +10,7 @@ import tileData from "../js/tileData";
 
 class ImageSlider extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       randPic: [],
       max: 10
