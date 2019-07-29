@@ -24,10 +24,10 @@ class PixiContainer extends React.Component {
     this.container.buttonMode = true;
     tileData.map((image, i) => {
       const imageToRender = new PIXI.Sprite.from(image.src.src);
-      if (i < 1) {
+      if (i === 0) {
         imageToRender.x = 0;
         imageToRender.y = 0;
-      } else if (i < 2) {
+      } else if (i === 1) {
         imageToRender.x = tileData[i - 1].src.width + 10;
         imageToRender.y = 0;
       } else {
@@ -60,9 +60,7 @@ class PixiContainer extends React.Component {
           pointerup={onDragEnd}
           pointerupoutside={onDragEnd}
           ref={ref => (this.container = ref)}
-        >
-          <Container />
-        </Container>
+        />
       </Stage>
     );
   }
@@ -76,63 +74,53 @@ function onMouseMove(e) {
   }
   const stageWidth = window.innerWidth;
   const stageHeight = window.innerHeight;
+
   const halfHeight = stageHeight / 100;
   const halfWidth = stageWidth / 100;
+
   const moveX = e.data.originalEvent.clientX;
   const moveY = e.data.originalEvent.clientY;
+
   const dx = (stageWidth >> 1) - moveX;
   const dy = (stageHeight >> 1) - moveY;
+
   const xAdd = (dx / stageWidth) * 85;
   const yAdd = (dy / stageHeight) * 85;
+
   const x = halfHeight + xAdd;
   const y = halfWidth + yAdd;
-  this._xLast = x;
-  this._yLast = y;
+
   this.x = x;
   this.y = y;
 }
 
+function onDragMove(e) {
+  if (this.dragging) {
+    const newPosition = this.data.getLocalPosition(this.parent);
+    const x = newPosition.x - this._xLast;
+    const y = newPosition.y - this._yLast;
+    const newX = x * 0.5;
+    const newY = y * 0.5;
+
+    this.position.x = newX;
+    this.position.y = newY;
+    // debugger;
+  }
+}
 function onDragStart(e) {
   // store a reference to the data
   // the reason for this is because of multitouch
   // we want to track the movement of this particular touch
   this.data = e.data;
   this.dragging = true;
-  this._xTo = 52800 >> 1;
-  this._yTo = 46200 >> 1;
-
-  this._xTo -= 440 + 217;
-  this._yTo -= 660 + 217;
-
-  this._xLast = e.data.originalEvent.x;
-  this._yLast = e.data.originalEvent.y;
+  this._xLast = this.position.x;
+  this._yLast = this.position.y;
 }
 
-function onDragEnd(e) {
-  const moveX = e.data.originalEvent.clientX;
-  const moveY = e.data.originalEvent.clientY;
+function onDragEnd() {
   this.dragging = false;
   // set the interaction data to null
   this.data = null;
-  this._xLast = moveX;
-  this._yLast = moveY;
-}
-
-function onDragMove(e) {
-  if (this.dragging) {
-    let x = e.data.originalEvent.x;
-    let y = e.data.originalEvent.y;
-
-    let dx = x - this._xLast;
-    let dy = y - this._yLast;
-
-    this._xTo += dx * 1;
-    this._yTo += dy * 1;
-
-    this._xLast = x;
-    this._yLast = y;
-
-    this.x = this._xLast;
-    this.y = this._yLast;
-  }
+  this._xLast = this.position.x;
+  this._yLast = this.position.y;
 }
